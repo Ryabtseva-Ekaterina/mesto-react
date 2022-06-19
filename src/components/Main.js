@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../utils/Api';
 import Card from '../components/Card.js';
 
 
 function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
 
-    const [userName, setUserName] = React.useState('');
-    const [userDescription, setUserDescription] = React.useState('');
-    const [userAvatar, setUserAvatar] = React.useState('');
-    const [cards, setCards] = React.useState([]);
+    const [userName, setUserName] = useState('');
+    const [userDescription, setUserDescription] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
+    const [cards, setCards] = useState([]);
 
 
-    React.useEffect (() => {
+    useEffect (() => {
         api.getProfileInfo().then((userStats)=> {
             setUserAvatar(
                userStats.avatar
@@ -25,6 +25,9 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
                 userStats.about
             )
         })
+        .catch ((err) => {
+            console.log (err);
+        })
 
         api.getCards()
             .then ((data) => {
@@ -36,6 +39,9 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
                         likes: item.likes
                     }))
                 )
+            })
+            .catch ((err) => {
+                console.log (err);
             })
     }, []);
 
