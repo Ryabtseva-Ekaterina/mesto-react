@@ -68,7 +68,7 @@ class Api {
         );
     }
 
-    likeCard (data, id) {
+    likeCard (id) {
         const cardId = id;
         return fetch (`${this._baseUrl}/cards/${cardId}/likes`, { 
             method: 'PUT',
@@ -78,7 +78,7 @@ class Api {
         );
     }
 
-    disLikeCard (data, id) {
+    disLikeCard (id) {
         const cardId = id;
         return fetch (`${this._baseUrl}/cards/${cardId}/likes`, { 
             method: 'DELETE',

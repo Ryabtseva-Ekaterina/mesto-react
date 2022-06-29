@@ -1,62 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import api from '../utils/Api';
+import React from 'react';
 import Card from '../components/Card.js';
+import api from '../utils/Api';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
-function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
+function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike, onCardDelete, cards}) {
 
-    const [userName, setUserName] = useState('');
-    const [userDescription, setUserDescription] = useState('');
-    const [userAvatar, setUserAvatar] = useState('');
-    const [cards, setCards] = useState([]);
-
-
-    useEffect (() => {
-        api.getProfileInfo().then((userStats)=> {
-            setUserAvatar(
-               userStats.avatar
-            )
-            
-            setUserName(
-                userStats.name
-            )
-
-            setUserDescription(
-                userStats.about
-            )
-        })
-        .catch ((err) => {
-            console.log (err);
-        })
-
-        api.getCards()
-            .then ((data) => {
-                setCards(
-                    data.map((item) => ({
-                        id: item._id,
-                        link: item.link,
-                        name: item.name,
-                        likes: item.likes
-                    }))
-                )
-            })
-            .catch ((err) => {
-                console.log (err);
-            })
-    }, []);
-
+    const user = React.useContext(CurrentUserContext);
+    
     return (
         <main>
 
             <section className="profile">
                 <div className="profile__avatar">
                     <button className="profile__avatar-button" type="button" aria-label="Изменить_аватар" onClick={()=> {onEditAvatar(true)}} ></button>
-                    <img className="profile__avatar-image" style={{ backgroundImage: `url(${userAvatar})`, backgroundSize: 'cover' }} />
+                    <img className="profile__avatar-image" style={{ backgroundImage: `url(${user.avatar})`, backgroundSize: 'cover' }} />
                 </div>
                 <div className="profile__intro">
-                    <h1 className="profile__intro-name">{userName}</h1>
+                    <h1 className="profile__intro-name">{user.name}</h1>
                     <button className="profile__intro-edit-button" type="button" aria-label="Редактировать" onClick={()=> {onEditProfile(true)}}></button>
-                    <p className="profile__intro-description">{userDescription}</p>
+                    <p className="profile__intro-description">{user.about}</p>
                 </div>
                 <button className="profile__add-button" type="button" aria-label="Добавить" onClick={()=> {onAddPlace(true)}}></button>
             </section>
@@ -65,11 +28,15 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
                 <ul className="elements__cards">
                     {cards.map((card) => (
                         <Card 
-                            key = {card.id}
+                            key = {card._id}
+                            _id = {card._id}
                             link = {card.link}
                             name = {card.name}
                             likes = {card.likes}
-                            onCardClick={onCardClick}/>
+                            owner = {card.owner}
+                            onCardClick={onCardClick}
+                            onCardLike={onCardLike}
+                            onCardDelete={onCardDelete}/>
                     ))}
                 </ul>
             </section>
