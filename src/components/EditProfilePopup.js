@@ -37,10 +37,29 @@ function EditProfilePopup ({isOpen, onClose, onUpdateUser}) {
             onClose = {onClose}
             onSubmit = {handleSubmit}
             buttonText='Сохранить'>
-            <input id="name-input" value={name || ''} onChange={handleChangeName} className="popup__container-form-input popup__container-form-input_type_name" type="text" name="name" placeholder="Имя" minLength="2" maxLength="40" required />
-            <span className="name-input-error popup__container-form-input-text-error popup__container-form-input-text-error_top"></span>
-            <input id="job-input" value={description || ''} onChange={handleChangeDescription} className="popup__container-form-input popup__container-form-input_type_job" type="text" name="about" placeholder="Занятие" minLength="2" maxLength="200" required />
-            <span className="job-input-error popup__container-form-input-text-error popup__container-form-input-text-error_bottom"></span>
+            <input
+                id="name-input" 
+                value={name || ''} 
+                onChange={handleChangeName}
+                className="popup__container-form-input popup__container-form-input_type_name" 
+                type="text" 
+                name="name"
+                placeholder="Имя"
+                minLength="2" 
+                maxLength="40" 
+                required />
+            <span className="name-input-error popup__container-form-input-text-error popup__container-form-input-text-error_top"/>
+            <input 
+                id="job-input"
+                value={description || ''} 
+                onChange={handleChangeDescription} 
+                className="popup__container-form-input popup__container-form-input_type_job" 
+                type="text" name="about" 
+                placeholder="Занятие" 
+                minLength="2" 
+                maxLength="200" 
+                required />
+            <span className="job-input-error popup__container-form-input-text-error popup__container-form-input-text-error_bottom"/>
         </PopupWithForm>
     );
 }

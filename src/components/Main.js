@@ -13,15 +13,29 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
 
             <section className="profile">
                 <div className="profile__avatar">
-                    <button className="profile__avatar-button" type="button" aria-label="Изменить_аватар" onClick={()=> {onEditAvatar(true)}} ></button>
-                    <img className="profile__avatar-image" style={{ backgroundImage: `url(${user.avatar})`, backgroundSize: 'cover' }} />
+                    <button 
+                        className="profile__avatar-button" 
+                        type="button" 
+                        aria-label="Изменить_аватар"/>
+                    <img 
+                        className="profile__avatar-image" 
+                        style={{ backgroundImage: `url(${user.avatar})`, backgroundSize: 'cover' }} 
+                        onClick={()=> {onEditAvatar(true)}}/>
                 </div>
                 <div className="profile__intro">
                     <h1 className="profile__intro-name">{user.name}</h1>
-                    <button className="profile__intro-edit-button" type="button" aria-label="Редактировать" onClick={()=> {onEditProfile(true)}}></button>
+                    <button 
+                        className="profile__intro-edit-button" 
+                        type="button" 
+                        aria-label="Редактировать" 
+                        onClick={()=> {onEditProfile(true)}}/>
                     <p className="profile__intro-description">{user.about}</p>
                 </div>
-                <button className="profile__add-button" type="button" aria-label="Добавить" onClick={()=> {onAddPlace(true)}}></button>
+                <button 
+                    className="profile__add-button" 
+                    type="button" 
+                    aria-label="Добавить" 
+                    onClick={()=> {onAddPlace(true)}}/>
             </section>
 
             <section className="elements">
@@ -36,7 +50,8 @@ function Main ({onEditAvatar, onEditProfile, onAddPlace, onCardClick, onCardLike
                             owner = {card.owner}
                             onCardClick={onCardClick}
                             onCardLike={onCardLike}
-                            onCardDelete={onCardDelete}/>
+                            onCardDelete={onCardDelete}
+                        />
                     ))}
                 </ul>
             </section>

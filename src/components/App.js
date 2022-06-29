@@ -25,6 +25,11 @@ function App() {
             setCurrentUser(
                userStats
             )
+            })
+            .catch ((err) => {
+                console.log (err);
+            })
+
         api.getCards().then ((data) => {
             setCards(
                     data.map((card) => ({
@@ -36,10 +41,9 @@ function App() {
                     }))
                 )
             })
-        })
-        .catch ((err) => {
-            console.log (err);
-        })
+            .catch ((err) => {
+                console.log (err);
+            })
     }, []);
     
     function closeAllPopup () {
@@ -175,4 +179,3 @@ function App() {
 }
 
 export default App;
-

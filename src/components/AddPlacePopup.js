@@ -30,10 +30,27 @@ function AddPlacePopup ({isOpen, onClose, onAddPlace}) {
         onClose = {onClose}
         onSubmit = {handleSubmit}
         buttonText='Создать'>
-            <input id="place-input" value={namePlace} onChange={handleChangeNamePlace}  className="popup__container-form-input popup__container-form-input_type_name-place" type="text" name="name" placeholder="Название" minLength="2" maxLength="30" required />
-            <span className="place-input-error popup__container-form-input-text-error popup__container-form-input-text-error_top"></span>
-            <input id="url-input" value={url} onChange={handleChangeUrl} className="popup__container-form-input popup__container-form-input_type_url" type="url" name="link" placeholder="Ссылка на картинку" required />
-            <span className="url-input-error popup__container-form-input-text-error popup__container-form-input-text-error_bottom"></span>
+            <input 
+                id="place-input" 
+                value={namePlace} 
+                onChange={handleChangeNamePlace}  
+                className="popup__container-form-input popup__container-form-input_type_name-place" 
+                type="text" name="name" 
+                placeholder="Название" 
+                minLength="2" 
+                maxLength="30" 
+                required />
+            <span className="place-input-error popup__container-form-input-text-error popup__container-form-input-text-error_top"/>
+            <input 
+                id="url-input" 
+                value={url} 
+                onChange={handleChangeUrl} 
+                className="popup__container-form-input popup__container-form-input_type_url" 
+                type="url" 
+                name="link" 
+                placeholder="Ссылка на картинку" 
+                required />
+            <span className="url-input-error popup__container-form-input-text-error popup__container-form-input-text-error_bottom"/>
         </PopupWithForm>
     );
 }

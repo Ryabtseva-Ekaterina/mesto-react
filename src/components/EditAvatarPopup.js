@@ -25,8 +25,15 @@ function EditAvatarPopup ({isOpen, onClose, onUpdateAvatar}) {
             onClose = {onClose} 
             onSubmit = {handleSubmit}
             buttonText='Сохранить'>
-            <input id="url-input-avatar" ref={avatarRef} onChange={handleChangeAvatar} className="popup__container-form-input popup__container-form-input_type_url" type="url" name="avatar" placeholder="Ссылка на аватар" required />
-            <span className="url-input-avatar-error popup__container-form-input-text-error edit-avatar-popup__container-form-input-text-error"></span>
+            <input 
+                id="url-input-avatar" 
+                ref={avatarRef} 
+                onChange={handleChangeAvatar} 
+                className="popup__container-form-input popup__container-form-input_type_url" 
+                type="url" name="avatar" 
+                placeholder="Ссылка на аватар" 
+                required />
+            <span className="url-input-avatar-error popup__container-form-input-text-error edit-avatar-popup__container-form-input-text-error"/>
             </PopupWithForm>
     );
 }
